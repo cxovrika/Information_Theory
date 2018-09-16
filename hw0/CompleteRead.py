@@ -6,6 +6,8 @@ def get_parameters():
 
 def simple_read(input_file_name, output_file_name):
     with open(input_file_name, 'rb') as rfile, open(output_file_name, 'w') as wfile:
+
+        current_token = ''
         while True:
             symbols = rfile.read(1)
             if not symbols: break
@@ -13,7 +15,11 @@ def simple_read(input_file_name, output_file_name):
 
             for i in reversed(range(8)):
                 bit = '1' if (byte & (1<<i)) else '0'
-                wfile.write(bit)
+                if (bit == '1'):
+                    wfile.write(current_token)
+                    current_token = bit
+                else:
+                    current_token += bit
 
 def main():
     input_file_name, output_file_name = get_parameters()
