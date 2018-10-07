@@ -4,7 +4,7 @@ def get_parameters():
     if len(sys.argv) != 3: raise Exception("Should pass exactly 2 parameters, passed: {0}".format(len(sys.argv) - 1))
     return sys.argv[1], sys.argv[2]
 
-def simple_read(input_file_name, output_file_name):
+def complete_read(input_file_name, output_file_name):
     with open(input_file_name, 'rb') as rfile, open(output_file_name, 'w') as wfile:
 
         current_token = ''
@@ -23,7 +23,7 @@ def simple_read(input_file_name, output_file_name):
 
 def main():
     input_file_name, output_file_name = get_parameters()
-    simple_read(input_file_name, output_file_name)
+    complete_read(input_file_name, output_file_name)
 
 if __name__ == "__main__":
     main()
